@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind CSS Flashcards</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* For the 3D flip effect */
+        .card-container {
+            perspective: 1000px;
+        }
+        .card {
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .card.is-flipped {
+            transform: rotateY(180deg);
+        }
+        .card-face {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden; /* Safari */
+        }
+        .card-back {
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen font-sans">
+
+    <div class="w-full max-w-md mx-auto">
+        <h1 class="text-3xl font-bold text-gray-800 text-center mb-2">Flashcards</h1>
+        <p class="text-gray-600 text-center mb-6">Click the card to flip it!</p>
+
+        <!-- Card Component -->
+        <div id="card-container" class="card-container w-full h-64 mb-6">
+            <div id="card" class="card relative w-full h-full cursor-pointer">
+                <!-- Front of the card -->
+                <div class="card-face absolute w-full h-full flex items-center justify-center bg-white rounded-xl shadow-xl border border-gray-200">
+                    <p id="card-front-text" class="text-2xl font-semibold text-gray-700 p-4 text-center">What is the capital of France?</p>
+                </div>
+                <!-- Back of the card -->
+                <div class="card-face card-back absolute w-full h-full flex items-center justify-center bg-blue-500 rounded-xl shadow-xl">
+                    <p id="card-back-text" class="text-2xl font-semibold text-white p-4 text-center">Paris</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="flex justify-center space-x-4">
+            <button id="prev-button" class="bg-gray-300 text-gray-700 font-semibold py-2 px-6 rounded-lg shadow-md hover:bg-gray-400 transition-colors duration-200">
+                Previous
+            </button>
+            <button id="next-button" class="bg-blue-600 text-white font-semibold py-2 px-6 rounded-lg shadow-md hover:bg-blue-700 transition-colors duration-200">
+                Next
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const flashcards = [
+            { question: "What is the capital of France?", answer: "Paris" },
+            { question: "What is 2 + 2?", answer: "4" },
+            { question: "Which planet is known as the Red Planet?", answer: "Mars" },
+            { question: "Who wrote 'To Kill a Mockingbird'?", answer: "Harper Lee" }
+        ];
+
+        let currentCardIndex = 0;
+
+        const card = document.getElementById('card');
+        const cardFrontText = document.getElementById('card-front-text');
+        const cardBackText = document.getElementById('card-back-text');
+        const nextButton = document.getElementById('next-button');
+        const prevButton = document.getElementById('prev-button');
+
+        function updateCardContent() {
+            cardFrontText.textContent = flashcards[currentCardIndex].question;
+            cardBackText.textContent = flashcards[currentCardIndex].answer;
+            // Ensure card is not flipped when content changes
+            if (card.classList.contains('is-flipped')) {
+                card.classList.remove('is-flipped');
+            }
+        }
+
+        // Flip the card on click
+        card.addEventListener('click', () => {
+            card.classList.toggle('is-flipped');
+        });
+
+        // Go to the next card
+        nextButton.addEventListener('click', () => {
+            currentCardIndex = (currentCardIndex + 1) % flashcards.length;
+            updateCardContent();
+        });
+
+        // Go to the previous card
+        prevButton.addEventListener('click', () => {
+            currentCardIndex = (currentCardIndex - 1 + flashcards.length) % flashcards.length;
+            updateCardContent();
+        });
+
+        // Initialize with the first card
+        updateCardContent();
+    </script>
+
+</body>
+</html>
