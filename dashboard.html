@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards Dashboard</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-4xl mx-auto py-4 px-6">
+            <h1 class="text-2xl font-bold text-gray-800">Bethel Flashcards</h1>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto py-8 px-6">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-3xl font-bold text-gray-700">Your Decks</h2>
+            <button class="bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-blue-700 transition-colors duration-200 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
+                </svg>
+                Create New Deck
+            </button>
+        </div>
+
+        <!-- Decks Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+
+            <!-- Deck Card 1: JavaScript Basics -->
+            <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden transform hover:-translate-y-1 transition-transform duration-200">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">JavaScript Basics</h3>
+                    <p class="text-gray-600 mb-4">25 Cards</p>
+                    <a href="flashcard-tailwind.html" class="w-full block text-center bg-blue-500 text-white font-semibold py-2 rounded-lg hover:bg-blue-600 transition-colors duration-200">
+                        Study Now
+                    </a>
+                </div>
+            </div>
+
+            <!-- Deck Card 2: World Capitals -->
+            <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden transform hover:-translate-y-1 transition-transform duration-200">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">World Capitals</h3>
+                    <p class="text-gray-600 mb-4">50 Cards</p>
+                    <a href="flashcard-tailwind.html" class="w-full block text-center bg-blue-500 text-white font-semibold py-2 rounded-lg hover:bg-blue-600 transition-colors duration-200">
+                        Study Now
+                    </a>
+                </div>
+            </div>
+
+            <!-- Deck Card 3: CSS Fundamentals -->
+            <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden transform hover:-translate-y-1 transition-transform duration-200">
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">CSS Fundamentals</h3>
+                    <p class="text-gray-600 mb-4">30 Cards</p>
+                    <a href="flashcard-tailwind.html" class="w-full block text-center bg-blue-500 text-white font-semibold py-2 rounded-lg hover:bg-blue-600 transition-colors duration-200">
+                        Study Now
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+
+</body>
+</html>
